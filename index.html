@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="navbar" id="navbar">
+      <div class="header">
+        <h1>Notes App</h1>
+        <p>Take Notes and never forget</p>
+      </div>
+    </div>
+
+    <div class="content-all" style="width: 100%">
+      <div class="container">
+        <div class="row">
+          <input type="text " class="f-notes" placeholder="Filter notes" />
+          <select name="" id="filter-by">
+            <option value="updatedate">Sort by last edited</option>
+            <option value="title">Sort by alphabetically</option>
+            <option value="time">Sort by recently created</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="note-list">
+        <div class="note" id="notestoshow">
+          <ul>
+            <div id="note"></div>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="btn" id="createnote">
+          <a href="./edit-text.html">
+            <button class="btn-text">Create Note</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="./main2.js"></script>
+    <!-- <script src="./main.js"></script> -->
+  </body>
+</html>
