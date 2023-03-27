@@ -29,6 +29,7 @@ function showNotes() {
     const noteEl= document.createElement("div")
     noteEl.addEventListener("click", ()=>{
       pushRoute(element.id)
+      
     })
     noteEl.innerHTML = ` <div id="note">
     <a id="addnotes">
@@ -38,8 +39,15 @@ function showNotes() {
       </div>
     </a>
   </div> `
+
+  
    listnote.appendChild(noteEl);
-  });
+
+    
+
+
+  }
+  );
 
   let notetoshow = document.getElementById("notestoshow");
   if (notesObj.length != 0) {
