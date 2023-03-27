@@ -38,11 +38,12 @@ addbtn.addEventListener("click", function (event) {
     // console.log(noteObj);
     // console.log(txtObj);
     // showNotes();
+    window.location.href ="/";
   
 });
 
 
-//remove note---------------------------------------------------------------------------------------
+//remove note      ----------------------------------------------------------------------------------
 let removeItem = document.getElementById("remove-note");
 
 removeItem.addEventListener("click", function (event) {
@@ -99,7 +100,6 @@ function deleteData() {
         noteData.splice(indexToDelete, 1);
         localStorage.setItem("note", JSON.stringify(noteData));
     }
-
 
 
 
