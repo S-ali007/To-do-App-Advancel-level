@@ -28,7 +28,7 @@ const product = myUrl2.searchParams.get("id");
 // console.log(product)
 // localStorage.setItem("data", JSON.stringify(noteObj));
 
-const productData = JSON.parse(localStorage.getItem("note"));
+const productData = JSON.parse(localStorage.getItem("note")) || []
 const matchingData = productData.find(note => note.id == product);
 
 if (matchingData) {
@@ -51,7 +51,7 @@ const noteButton = document.getElementById("add-note");
 const myUrl23 = new URL(window.location.href);
 const noteId = myUrl23.searchParams.get("id");
 
-let notes = JSON.parse(localStorage.getItem("note"));
+let notes = JSON.parse(localStorage.getItem("note")) || []
 
 let existingNote = notes.find((note) => note.id == noteId);
 
@@ -77,7 +77,7 @@ addbtn.addEventListener("click", function (event) {
         // txtObj=JSON.parse(txtdescription);
     }
     if (existingNote) {
-        const index = notes.findIndex(note => note.id == existingNote.id);
+        const index = notes.findIndex(note => note.id == existingNote.id) ;
         noteObj[index].title = addtxt.value;
         noteObj[index].description = txtarea.value;
         // console.log(noteObj[index].description);
