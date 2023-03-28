@@ -30,6 +30,7 @@ function showNotes() {
     noteEl.addEventListener("click", ()=>{
       pushRoute(element.id)
       
+
     })
     noteEl.innerHTML = ` <div id="note">
     <a id="addnotes">

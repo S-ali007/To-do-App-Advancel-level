@@ -7,40 +7,7 @@ let txtObj;
 // let selectedNoteId = localStorage.getItem('selectedNoteId');
 // const noteIndex = noteObj.findIndex(note => note.id === parseInt(selectedNoteId));
 
-addbtn.addEventListener("click", function (event) {
-    let addtxt = document.getElementById("addtxt");
-    let txtarea = document.getElementById("txtarea");
-    let note = localStorage.getItem("note");
-    // let txtdescription=localStorage.getItem('txtdescription');
-    if (!note) {
-        noteObj = [];
-        txtObj = [];
-    } else {
-        noteObj = JSON.parse(note);
-        // txtObj=JSON.parse(txtdescription);
-    }
 
-    noteObj.push({
-        title: addtxt.value,
-        description: txtarea.value,
-        id: Date.now(),
-    });
-
-    // txtObj.push(txtarea.value);
-
-    localStorage.setItem("note", JSON.stringify(noteObj));
-
-
-    //   localStorage.setItem("txtdescription", JSON.stringify(txtObj));
-
-    addtxt.value= "  ";
-    txtarea.value= " ";
-    // console.log(noteObj);
-    // console.log(txtObj);
-    // showNotes();
-    window.location.href ="/";
-  
-});
 
 
 //remove note      ----------------------------------------------------------------------------------
@@ -76,6 +43,105 @@ if (matchingData) {
 //  console.log(matchingData);
 
 
+//update-----------------------------------------------------------------------------------------------------
+const noteTitle = document.getElementById("addtxt");
+const noteBody = document.getElementById("txtarea");
+const noteButton = document.getElementById("add-note");
+
+const myUrl23 = new URL(window.location.href);
+const noteId = myUrl23.searchParams.get("id");
+
+let notes = JSON.parse(localStorage.getItem("note"));
+
+let existingNote = notes.find((note) => note.id == noteId);
+
+console.log(existingNote);
+
+if (existingNote) {
+    // noteTitle.value = existingNote.title;
+    // noteBody.value = existingNote.description;
+    noteButton.textContent = "Update Note ";
+    //   console.log("testing statement");
+}
+addbtn.addEventListener("click", function (event) {
+    let addtxt = document.getElementById("addtxt");
+    let txtarea = document.getElementById("txtarea");
+    let note = localStorage.getItem("note");
+    // let txtdescription=localStorage.getItem('txtdescription');
+
+    if (!note) {
+        noteObj = [];
+        txtObj = [];
+    } else {
+        noteObj = JSON.parse(note);
+        // txtObj=JSON.parse(txtdescription);
+    }
+    if (existingNote) {
+        const index = notes.findIndex(note => note.id == existingNote.id);
+        noteObj[index].title = addtxt.value;
+        noteObj[index].description = txtarea.value;
+        // console.log(noteObj[index].description);
+        // console.log(noteObj[index].title);
+
+
+        // noteObj[index].description = txtarea.value;
+        
+
+    }
+    else {
+        noteObj.push({
+            title: addtxt.value,
+            description: txtarea.value,
+            id: Date.now(),
+        });
+
+    }
+    // txtObj.push(txtarea.value);
+
+    localStorage.setItem("note", JSON.stringify(noteObj));
+
+
+    //   localStorage.setItem("txtdescription", JSON.stringify(txtObj));
+
+    addtxt.value = "  ";
+    txtarea.value = " ";
+    // console.log(noteObj);
+    // console.log(txtObj);
+    // showNotes();
+    window.location.href = "/";
+
+});
+// 
+// for new node-------------------------------------------------------------------------------------------------------
+//   if (note) {
+//     // update note in local storage
+//     note.title = noteTitle.value;
+//     note.description = noteBody.value;
+//     localStorage.setItem("note", JSON.stringify(notes));
+//     console.log("Note updated successfully");
+//   } 
+//   else {console.log("No note found")}
+//     // add new note to local storage
+//     const newNote = {
+//       id: Date.now().toString(),
+//       title: noteTitle.value,
+//       description: noteBody.value,
+// })
+//     const newNote = {
+//       id: Date.now().toString(),
+//       title: noteTitle.value,
+//       description: noteBody.value,
+//     };
+
+// //     noteObj.push(newNote);
+// //     localStorage.setItem("note", JSON.stringify(notes));
+// //     console.log("Note added successfully");
+// //   }
+// // });
+
+
+
+
 
 
 // function deleteData() {-------------------------------------------------------------------------------------
@@ -85,12 +151,12 @@ function deleteData() {
 
     const myUrl = new URL(window.location.href);
     console.log(myUrl);
-    
+
     const noteid = myUrl2.searchParams.get("id");
     console.log(noteid)
 
     const noteData = JSON.parse(localStorage.getItem("note"));
-    console.log(noteData) ;
+    console.log(noteData);
 
 
     const indexToDelete = noteData.findIndex(item => item.id == noteid);
