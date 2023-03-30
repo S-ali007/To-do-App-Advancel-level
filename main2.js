@@ -51,6 +51,8 @@ function showNotes() {
   );
 
   let notetoshow = document.getElementById("notestoshow");
+  
+  if(notetoshow){
   if (notesObj.length != 0) {
    
     notetoshow.innerHTML = html;
@@ -60,11 +62,8 @@ function showNotes() {
         <p class="para-text">No notes to Show</p>
       </div>`;
   }
-
+  }
 }
-
-
-
 
 
 
