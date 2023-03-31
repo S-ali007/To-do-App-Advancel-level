@@ -60,7 +60,7 @@ function filterNotes() {
   let option = filterBy.value;
   console.log(option)
   let filteredNotes = notesObj.filter(function (note) {
-    return note.title.toLowerCase().includes(input),note.updatedTime
+    return note.title.toLowerCase().includes(input)
     
   });
 
