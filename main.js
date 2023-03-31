@@ -22,11 +22,12 @@ removeItem.addEventListener("click", function (event) {
 
 
 
-// using the current page's URL---------------------------------------------------------------------
+// using the current page's URL------------------------------------------------------------------------------------
 const myUrl2 = new URL(window.location.href);
 const product = myUrl2.searchParams.get("id");
 // console.log(product)
 // localStorage.setItem("data", JSON.stringify(noteObj));
+
 
 const productData = JSON.parse(localStorage.getItem("note")) || []
 const matchingData = productData.find(note => note.id == product);
@@ -36,7 +37,8 @@ if (matchingData) {
     // console.log(productData)
     document.getElementById("addtxt").value = matchingData.title;
     document.getElementById("txtarea").value = matchingData.description;
-} else {
+}
+else {
     console.log(`No data found for ID `);
 }
 //  console.log(productData)
@@ -77,15 +79,14 @@ addbtn.addEventListener("click", function (event) {
         // txtObj=JSON.parse(txtdescription);
     }
     if (existingNote) {
-        const index = notes.findIndex(note => note.id == existingNote.id) ;
+        const index = notes.findIndex(note => note.id == existingNote.id);
         noteObj[index].title = addtxt.value;
         noteObj[index].description = txtarea.value;
+        noteObj[index].updatedTime  =  new Date()
+        console.log([index].updatedTime=new Date())
         // console.log(noteObj[index].description);
         // console.log(noteObj[index].title);
-
-
         // noteObj[index].description = txtarea.value;
-        
 
     }
     else {
@@ -93,14 +94,14 @@ addbtn.addEventListener("click", function (event) {
             title: addtxt.value,
             description: txtarea.value,
             id: Date.now(),
+            createdTime: new Date(),
+            updatedTime :new Date ()
         });
 
     }
     // txtObj.push(txtarea.value);
 
     localStorage.setItem("note", JSON.stringify(noteObj));
-
-
     //   localStorage.setItem("txtdescription", JSON.stringify(txtObj));
 
     addtxt.value = "  ";
@@ -109,9 +110,9 @@ addbtn.addEventListener("click", function (event) {
     // console.log(txtObj);
     // showNotes();
     window.location.href = "/";
-
 });
-// 
+
+
 // for new node-------------------------------------------------------------------------------------------------------
 //   if (note) {
 //     // update note in local storage

@@ -76,19 +76,19 @@ select {
 
 }
 
-#note a{
+.note a{
    text-decoration: none;
 
   
 }
 
-#note a .i-c-heading{
+.note a .i-c-heading{
 color: rgb(51 51 51);
 font-size: 1.25rem;
 line-height: 1.75rem;
 }
 
-#note a .last-updated{
+.note a .last-updated{
   color: rgb(51 51 51);
   margin: 0;
   font-style: italic;
