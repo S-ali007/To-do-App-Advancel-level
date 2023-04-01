@@ -66,6 +66,8 @@ function filterNotes() {
 
 
 
+
+
   if (option === "updatedTime") {
     filteredNotes.sort((a, b) => (a.updatedTime > b.updatedTime ? -1 : 1));
   } else if (option === "title") {
@@ -76,6 +78,11 @@ function filterNotes() {
 
   showNotes(filteredNotes);
 }
+
+
+
+
+
 
 function showNotes(prevNotes) {
 
