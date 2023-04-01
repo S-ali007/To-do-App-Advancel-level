@@ -50,7 +50,7 @@ const pushRoute = (id) => {
 
 function filterNotes() {
   let notes = localStorage.getItem("note");
-  console.log(notes)
+  // console.log(notes)
   if (!notes) {
     notesObj = [];
   } else {
@@ -61,7 +61,7 @@ function filterNotes() {
   console.log(option)
   let filteredNotes = notesObj.filter(function (note) {
     return note.title.toLowerCase().includes(input)
-    
+
   });
 
 
@@ -78,6 +78,42 @@ function filterNotes() {
 
   showNotes(filteredNotes);
 }
+// ---------------------------------function for last ago
+
+function getTimeElapsedString(updatedTime) {
+  const secondsElapsed = Math.floor((Date.now() - updatedTime) / 1000);
+  // console.log(secondsElapsed)
+  
+  const intervals = {
+    day: 86400,
+    hour: 3600,
+    minute: 60,
+    second: 1,
+  };
+
+  for (const [intervalName, secondsInInterval] of Object.entries(intervals)) {
+    const intervalCount = Math.floor(secondsElapsed / secondsInInterval);
+    if (intervalCount >= 1) {
+      return `${intervalCount} ${intervalName}${intervalCount > 1 ? 's' : ''} ago`;
+    }
+  }
+
+  return 'just now';
+}
+
+
+const myArray = localStorage.getItem("note")
+console.log(myArray)
+const elapsedString = getTimeElapsedString(new Date());
+console.log(elapsedString); 
+// localStorage.setItem('myArray', JSON.stringify(myArray));
+
+
+const storedArray = JSON.parse(localStorage.getItem('myArray'));
+console.log(storedArray)
+// const item = storedArray[0];
+// const elapsedString = getTimeElapsedString(new Date(item.updatedTime));
+console.log(elapsedString); // e.g. "1 day ago"
 
 
 
@@ -99,7 +135,7 @@ function showNotes(prevNotes) {
         <a id="addnotes">
           <div class="inner-content">
             <p class="i-c-heading">${element.title}</p>
-            <p class="last-updated">Last Editied :6 minutes ago</p>
+            <p class="last-updated">Last Editied ${elapsedString} </p>
           </div>
         </a>
       </div>
@@ -112,7 +148,7 @@ function showNotes(prevNotes) {
     let noToShow = document.getElementById("notestoshow");
     if (noToShow) {
       if (prevNotes.length != 0) {
-        noToShow.innerHTML = html;
+        // noToShow.innerHTML = html;
       } else {
         noToShow.innerHTML = `
         <div class="para">
@@ -136,8 +172,6 @@ filterNotes();
 
 filterInput.addEventListener("input", filterNotes);
 filterBy.addEventListener("change", filterNotes);
-
-
 
 
 

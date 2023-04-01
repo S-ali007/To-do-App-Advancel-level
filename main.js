@@ -82,8 +82,8 @@ addbtn.addEventListener("click", function (event) {
         const index = notes.findIndex(note => note.id == existingNote.id);
         noteObj[index].title = addtxt.value;
         noteObj[index].description = txtarea.value;
-        noteObj[index].updatedTime  =  new Date()
-        console.log([index].updatedTime=new Date())
+        noteObj[index].updatedTime = new Date()
+        console.log([index].updatedTime = new Date())
         // console.log(noteObj[index].description);
         // console.log(noteObj[index].title);
         // noteObj[index].description = txtarea.value;
@@ -95,7 +95,7 @@ addbtn.addEventListener("click", function (event) {
             description: txtarea.value,
             id: Date.now(),
             createdTime: new Date(),
-            updatedTime :new Date ()
+            updatedTime: new Date()
         });
 
     }
